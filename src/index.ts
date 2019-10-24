@@ -58,6 +58,15 @@ export function render(
   opt: EmbedOptions,
   output_area: any
 ) {
+  console.log('Index render called.');
+
+  vega.formatLocale({
+    decimal: ",",
+    thousands: ".",
+    grouping: [3],
+    currency: ["", "\u00a0€"]
+  });
+
   // Find the indices of this visualizations JS and PNG
   // representation.
   const imgIndex = imageIndex(selector, output_area.outputs);
