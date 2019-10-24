@@ -65,6 +65,13 @@ export function render(
   // Never been rendered, so render JS and append the PNG to the
   // outputs for the cell
   const el = document.getElementById(selector.substring(1))!;
+  
+  vegaEmbed.vega.formatLocale({
+      "decimal": ",",
+      "thousands": ".",
+      "grouping": [3],
+      "currency": ["", "\u00a0€"]
+    });
   vegaEmbed(el, spec, {
     loader: { http: { credentials: "same-origin" } },
     ...opt,
