@@ -44,6 +44,13 @@ export class VegaWidget extends DOMWidgetView {
       if (spec == null) {
         return;
       }
+      
+          vegaEmbed.vega.formatLocale({
+      "decimal": ",",
+      "thousands": ".",
+      "grouping": [3],
+      "currency": ["", "\u00a0€"]
+    });
 
       vegaEmbed(this.viewElement, spec, {
         loader: { http: { credentials: "same-origin" } },
