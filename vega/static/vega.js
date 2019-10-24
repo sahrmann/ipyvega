@@ -23,13 +23,6 @@ require(["nbextensions/jupyter-vega/index"], function(vega) {{
   // IPython.display.html#IPython.display.Javascript.__init__
   element[0].appendChild(target);
   element[0].appendChild(style);
-
-  vega.formatLocale({{
-      "decimal": ",",
-      "thousands": ".",
-      "grouping": [3],
-      "currency": ["", "\u00a0€"]
-    }});
   
   vega.render("#" + id, spec, type, opt, output_area);
 }}, function (err) {{
