@@ -1,6 +1,6 @@
 import { DOMWidgetView } from "@jupyter-widgets/base";
 import { View } from "vega";
-import { vegaEmbed } from "./index";
+import { vegaEmbed, vega } from "./index";
 
 interface WidgetUpdate {
   key: string;
@@ -44,8 +44,8 @@ export class VegaWidget extends DOMWidgetView {
       if (spec == null) {
         return;
       }
-      
-          vegaEmbed.vega.formatLocale({
+
+    vega.formatLocale({
       "decimal": ",",
       "thousands": ".",
       "grouping": [3],

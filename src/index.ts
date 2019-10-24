@@ -1,8 +1,8 @@
 import { Spec } from "vega";
-import vegaEmbed, { EmbedOptions, Mode } from "vega-embed";
+import vegaEmbed, { vega, EmbedOptions, Mode } from "vega-embed";
 import { TopLevelSpec } from "vega-lite";
 
-export { default as vegaEmbed } from "vega-embed";
+export { default as vegaEmbed, vega } from "vega-embed";
 
 function javascriptIndex(selector: string, outputs: any) {
   // Return the index in the output array of the JS repr of this viz
@@ -65,8 +65,8 @@ export function render(
   // Never been rendered, so render JS and append the PNG to the
   // outputs for the cell
   const el = document.getElementById(selector.substring(1))!;
-  
-  vegaEmbed.vega.formatLocale({
+
+  vega.formatLocale({
       "decimal": ",",
       "thousands": ".",
       "grouping": [3],
