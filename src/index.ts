@@ -4,6 +4,13 @@ import { TopLevelSpec } from "vega-lite";
 
 export { default as vegaEmbed, vega } from "vega-embed";
 
+vega.formatLocale({
+  decimal: ",",
+  thousands: ".",
+  grouping: [3],
+  currency: ["", "\u00a0€"]
+});
+
 function javascriptIndex(selector: string, outputs: any) {
   // Return the index in the output array of the JS repr of this viz
   for (let i = 0; i < outputs.length; i++) {
@@ -66,12 +73,6 @@ export function render(
   // outputs for the cell
   const el = document.getElementById(selector.substring(1))!;
 
-  vega.formatLocale({
-      "decimal": ",",
-      "thousands": ".",
-      "grouping": [3],
-      "currency": ["", "\u00a0€"]
-    });
   vegaEmbed(el, spec, {
     loader: { http: { credentials: "same-origin" } },
     ...opt,

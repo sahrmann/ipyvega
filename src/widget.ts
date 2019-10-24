@@ -2,6 +2,13 @@ import { DOMWidgetView } from "@jupyter-widgets/base";
 import { View } from "vega";
 import { vegaEmbed, vega } from "./index";
 
+vega.formatLocale({
+  decimal: ",",
+  thousands: ".",
+  grouping: [3],
+  currency: ["", "\u00a0€"]
+});
+
 interface WidgetUpdate {
   key: string;
   remove?: string;
@@ -29,6 +36,13 @@ export class VegaWidget extends DOMWidgetView {
   errorElement = document.createElement("div");
 
   render() {
+    vega.formatLocale({
+      decimal: ",",
+      thousands: ".",
+      grouping: [3],
+      currency: ["", "\u00a0€"]
+    });
+
     this.el.appendChild(this.viewElement);
     this.errorElement.style.color = "red";
     this.el.appendChild(this.errorElement);
@@ -44,13 +58,6 @@ export class VegaWidget extends DOMWidgetView {
       if (spec == null) {
         return;
       }
-
-    vega.formatLocale({
-      "decimal": ",",
-      "thousands": ".",
-      "grouping": [3],
-      "currency": ["", "\u00a0€"]
-    });
 
       vegaEmbed(this.viewElement, spec, {
         loader: { http: { credentials: "same-origin" } },
