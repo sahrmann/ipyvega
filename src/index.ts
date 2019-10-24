@@ -51,6 +51,16 @@ function showError(el: HTMLElement, error: Error) {
   throw error;
 }
 
+export function locale() {
+  vega.formatLocale({
+    decimal: ",",
+    thousands: ".",
+    grouping: [3],
+    currency: ["", "\u00a0€"]
+  });
+  console.log('Set locale called.');
+}
+
 export function render(
   selector: string,
   spec: Spec | TopLevelSpec,
