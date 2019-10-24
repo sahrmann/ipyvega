@@ -24,12 +24,12 @@ require(["nbextensions/jupyter-vega/index"], function(vega) {{
   element[0].appendChild(target);
   element[0].appendChild(style);
 
-  vega.formatLocale({
+  vega.formatLocale({{
       "decimal": ",",
       "thousands": ".",
       "grouping": [3],
       "currency": ["", "\u00a0€"]
-    });
+    }});
   
   vega.render("#" + id, spec, type, opt, output_area);
 }}, function (err) {{
